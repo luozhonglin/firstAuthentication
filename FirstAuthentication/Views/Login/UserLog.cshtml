@@ -1,0 +1,46 @@
+﻿@page
+@using FirstAuthentication.Data;
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using System.Security.Claims
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+
+<form method="post" action="/Login/ActionPost">
+    <style>
+        label {
+            display: inline-block;
+            min-width: 100px;
+        }
+    </style>
+    <div>
+        <label for="userName">用户名：</label>
+        <input type="text" name="userName" />
+    </div>
+    <div>
+        <label for="passWord">密码：</label>
+        <input type="password" name="passWord" />
+    </div>
+    <div>
+        <button type="submit">登入</button>
+    </div>
+</form>
+
+@functions {
+    //[IgnoreAntiforgeryToken]
+    public async void OnPost(string userName, string passWord)
+    {
+        var u = UserDatas.CheckUser(userName, passWord);
+        if (u != null)
+        {
+            Claim[] cs = new Claim[]
+            {
+                new Claim(ClaimTypes.Name, u.UserName!),
+                new Claim("level", u.Level.ToString())  //注意这里，收集重要情报
+            };
+            ClaimsIdentity id = new(cs, CookieAuthenticationDefaults.AuthenticationScheme);
+            ClaimsPrincipal p = new(id);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, p);
+            HttpContext.Response.Redirect("/");
+        }
+    }
+}
