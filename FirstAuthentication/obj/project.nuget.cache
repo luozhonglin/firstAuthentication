@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kFds9H/B4O3ybMPkjGpRvzFV1i069RsJvZnn2Hgi0LrSwrbIBW8upO6VxJCsI0Gc4b8NenGD8v7BwCTnZ+IYoQ==",
+  "dgSpecHash": "bhAo5asLOcdTmRgSRxvg+DBwS1nghClwhig6aDURJYM1+eoEL91U4ntZ+jxjZpot3b3eFSij3hF9v6z7CtrhtA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\FirstAuthentication\\FirstAuthentication\\FirstAuthentication.csproj",
+  "projectFilePath": "C:\\E\\lzl\\firstAuthentication\\FirstAuthentication\\FirstAuthentication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512"
   ],
