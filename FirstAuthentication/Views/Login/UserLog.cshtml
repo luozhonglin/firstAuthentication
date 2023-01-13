@@ -24,23 +24,3 @@
         <button type="submit">登入</button>
     </div>
 </form>
-
-@*@functions {
-    //[IgnoreAntiforgeryToken]
-    public async void OnPost(string userName, string passWord)
-    {
-        var u = UserDatas.CheckUser(userName, passWord);
-        if (u != null)
-        {
-            Claim[] cs = new Claim[]
-            {
-                new Claim(ClaimTypes.Name, u.UserName!),
-                new Claim("level", u.Level.ToString())  //注意这里，收集重要情报
-            };
-            ClaimsIdentity id = new(cs, CookieAuthenticationDefaults.AuthenticationScheme);
-            ClaimsPrincipal p = new(id);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, p);
-            HttpContext.Response.Redirect("/");
-        }
-    }
-}*@
