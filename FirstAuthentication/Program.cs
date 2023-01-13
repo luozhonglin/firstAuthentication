@@ -26,7 +26,7 @@ builder.Services.AddTransient<IAuthorizationPolicyProvider, LevelAuthorizationPo
 //    pb.AddAuthenticationSchemes(CookieAuthenticationDefaults.AuthenticationScheme);
 //    pb.AddRequirements(new LevelAuthorizationRequirement(3));
 //});
-
+builder.WebHost.UseUrls("http://*:9009");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -55,5 +55,4 @@ app.MapGet("/Logout", async (HttpContext context) =>
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=UserLog}/{id?}");
-
 app.Run();
